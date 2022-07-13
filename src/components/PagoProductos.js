@@ -5,12 +5,12 @@ import { Link, useParams, Outlet } from "react-router-dom";
 
 const PagoProductos = () => {
 
-   const {pan} = useParams()
+   const { micodigo, pan} = useParams()
   return (
     <Fragment>
       <div>PagoProductos</div>
-<div>proxima tarea crear fromulario para el pago</div>
-    <h1>{pan}</h1>
+      <div>proxima tarea crear fromulario para el pago</div>
+     - <h1>{pan}</h1> - <p>{micodigo}</p>
     </Fragment>
   );
 }

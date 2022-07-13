@@ -17,12 +17,9 @@ const Segundo = () => {
       </div>
       <div className="divSegundo">
         {first.map((x, index) => (
-          <div>
             <p key={index} className="App pSecundo">
-              <div>
-                {x.id}. {x.tipo} {x.precio} €              </div>
+                {x.id}. {x.tipo} {x.precio} €              
             </p>
-          </div>
         ))}
       </div>
       <div className="divLinkHome">

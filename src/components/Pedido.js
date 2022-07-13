@@ -22,17 +22,12 @@ const Pedido = () => {
       <div className="divSegundo">
         <>
           {first.map((x, index) => (
-            <div>
               <p key={index} className="App pSecundo">
-                <div>
-                  {x.id}.<Link to={`/pedido/${x.tipo}`}> {x.tipo} </Link>
+                  {x.id}.<Link to={`/cuarto/${x.tipo}`}> {x.tipo} </Link>
                   {x.precio} €
-                </div>
               </p>
-            </div>
           ))}
         </>
-        {/* {<Link to={`/pedido/${tipo}`}> {x.tipo} </Link>} */}
       </div>
       <div className="divLinkHome">
         <Link to={"/"} className="linkHome Link">

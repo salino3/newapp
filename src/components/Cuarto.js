@@ -1,54 +1,46 @@
-import { cleanup } from '@testing-library/react';
-import { clear } from '@testing-library/user-event/dist/clear';
-import React, { Fragment, useState } from 'react';
+
+import React, { Fragment, useState } from "react";
 import { Link, useParams, Outlet } from "react-router-dom";
 import { ListaPanes, Pasteles } from "../listasComponents/PanesLista";
 
 
 
-
-
-
 const Cuarto = () => {
+  const handleSubmit = (event) => {
 
-   const [first, setfirst] = useState('')
-   const { pan } = useParams();
+    const micodigo = event.target.codigo.value;
+    console.log(`código cliente:  ${micodigo}`);
+  };
+  //
+  const { pan, micodigo } = useParams();
 
-
-//
-const handleSubmit = (event) => {
-  event.preventDeafault();
-  const anombre = event.target.nombre.value;
-  const aemail = event.target.email.value;
-  const aedad = event.target.number.edad;
-  console.log(`datos cliente:  ${anombre} ,${aemail} , ${aedad}`);
-};
+  //
 
   return (
     <Fragment>
       <br />
-      <h2 style={{ color: "#9A6619" }}>
-        Inserta tus datos para comprar el producto
-      </h2>
+      <h2 style={{ color: "#9A6619" }}>Inserta tus datos</h2>
+      <Link to={"/"} className="linkHome Link">
+        Home
+      </Link>
       <hr className="hrSecundo" />
-      <h5>Elejiste pan -&gt;  ~{pan}~</h5>
+      <h5>Elejiste pan -&gt; ~{pan}~</h5>
       <hr className="hrSecundo" />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         {" "}
         <input
-          placeholder="Nombre y apellido.."
-          type="text"
-          name="nombre"
+          placeholder="Código cliente.."
+          name="codigo"
+          type="number"
         ></input>{" "}
         <br /> <br />
-        <input placeholder="Tu email.." name="email" type="email"></input>{" "}
-        <br /> <br />
-        <input placeholder="edad" name="edad" type="number"></input> <br />{" "}
-        <br />
         <button type="submit" style={{ background: "gold" }}>
-          {" "}
-          <Link to={"pagoproductos"}>Confirma tus datos personales</Link>{" "}
-        </button>
+          Confirma tus datos personales
+        </button>{" "}
+         
+        {micodigo}
+        &nbsp; &nbsp;
+        <Link to={`${micodigo}`}>Continuar para pagar</Link>
       </form>
       <br /> <br />
       <Outlet />
@@ -59,6 +51,6 @@ const handleSubmit = (event) => {
       </div>
     </Fragment>
   );
-}
+};
 
-export default Cuarto
+export default Cuarto;
